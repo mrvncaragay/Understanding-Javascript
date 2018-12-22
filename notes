@@ -1,0 +1,48 @@
+Syntax Parsers
+    -a program that reads your code and determines what it does and if its grammar is valid(syntax).
+    -compilers or interpreters do the process/work reading the code character by character whether the code is valid.
+
+Lexical Environments
+    -where something sits physically in the code you write.
+    -for instance, a function that has a variable 'var a' declared inside the function sits lexically inside
+     the function.
+
+Execution Context (Global)
+    -executed first
+    -a wrapper to help manage the code that is running.
+    -It creates a global object (window) and 'this' === global object
+
+    creation (phase 1)
+        -Setup memory space for Variables and Functions "Hoisting".
+            -Variables are initialized with 'undefined' when variables are uninitialized.
+            -Functions are initialized with all values set
+    Execution (phase 2)
+        -Runs your code line by line synchronously.
+
+name/value pairs
+    - address = "Eric"; address is the name and value is "Eric".
+
+Object
+    -A collection of name/value pairs.
+    -a value can be Object and have name/value pairs
+
+Global
+    -Not inside a Function
+
+undefined
+    -A value that it has not been set. note: never set a variable to 'undefined'.
+
+Single threaded
+    -One command is being executed one at a time.
+
+Synchronous
+    -One line at a time
+
+Function invocation '()'
+    -Running/calling the function. invoke the function tell javascript to run the function.
+    -every function invocation creates a new execution context.
+
+The Execution stack
+    -when a function is called/invoked a new execution context is created and put into the top of execution stack
+    -The execution context that is on top is executed first.
+    -When the execution context on top of the stack finishes it will pop off the stack.
