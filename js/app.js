@@ -1,17 +1,14 @@
-function b() {
-    console.log("Running function b.");
-    console.log(d);
-    var d = "d is called!";
-    console.log(d);
-
+function waitThreeSeconds() {
+    var ms = 3000 + new Date().getTime();
+    while (new Date < ms){}
+    console.log("finished function");
 }
 
-function a(){
-    console.log("Running function a.");
-    b();
-    console.log("Function b is finished executing!")
+function clickHandler() {
+    console.log('click event');
 }
 
-var c;
+document.addEventListener('click', clickHandler);
 
-a();
+waitThreeSeconds();
+console.log('finished execution');

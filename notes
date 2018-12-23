@@ -46,3 +46,45 @@ The Execution stack
     -when a function is called/invoked a new execution context is created and put into the top of execution stack
     -The execution context that is on top is executed first.
     -When the execution context on top of the stack finishes it will pop off the stack.
+
+Variables Environment
+    -where the variables lives
+    -Execution context has its own variables environment.
+
+The Scope Chain
+    -Every execution context has its outer environment 'Global Variable'
+    -think lexically, if myVar is not declared inside its environment to outer environment (a).
+    e.g function a() {
+         function b() {
+            console.log(myVar);
+        }
+
+        var myVar = 2;
+
+    }
+
+    -where Functions seats determine its outer environment.
+
+Scope
+    -Where a variable is available in your code.
+
+Block
+    - inside curly braces {}
+
+Asynchronous
+    -executes line of code one or more at a time.
+
+Event Queue
+    -e.g Click, http request
+    -event queue is process when the execution stack is empty.
+
+Dynamic Typing
+    -You dont tell the engine what type of data a variable to hold, it figure it out while your code is running.
+    -Variable can hold different types of value because it figures it our during execution.
+
+Static Typing
+    -you tell the engine/compiler a head of time exactly what type of data a variable can hold.
+    -int myNum = "two"; //this is an error because "two" is a string and myNum is numeric.
+    -var myNnum = "two"; //no error
+    -myNum = false; //no error
+    -myNum = 2; //no error
