@@ -1,8 +1,3 @@
-
-
-
-
-
 var objectLiteral = {
     firstname: 'Marvin',
     lastname: 'Caragay'

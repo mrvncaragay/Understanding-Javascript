@@ -6,6 +6,7 @@ Lexical Environments
     -where something sits physically in the code you write.
     -for instance, a function that has a variable 'var a' declared inside the function sits lexically inside
      the function.
+    -if it does not find the variable it will go to the outer environment and it will try  to look for that variable
 
 Execution Context (Global)
     -executed first
@@ -196,8 +197,19 @@ By Value
 By Reference
     -If the value is an Object and the new variable is set to that it
     -The new variable does not copy the Object, but instead points to the Object memory location.
+    -understand that when using objects, all variables points to the same will get the same
+     are going to see that change.
 
+Mutate
+    -To change something.
+    -Immutable means it cant be changed.
 
+this
+    -every time a function is run javascript engine provide a variable called 'this'
+    -In a case where a function is actually a method attached to an object the 'this' points
+     to the object.
+    -to points to the object memory location create a variable self and set it to this
+    -var self = this
 
 
 
