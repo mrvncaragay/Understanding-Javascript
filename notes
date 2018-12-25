@@ -88,3 +88,136 @@ Static Typing
     -var myNnum = "two"; //no error
     -myNum = false; //no error
     -myNum = 2; //no error
+
+Primitive Type
+    -A type of data represent a single value.
+    -Object is not a primitive type because object store name/value pair.
+    -Six types of primitive
+        -String
+            -sequence of characters '' or ""
+        -Boolean
+            -true or false
+            -true == 1
+            -false == 0
+        -numeric (integers)
+            -number
+        -undefined
+            -lack of existence (dont set variable to this)
+        -Null
+            -lack of existence (you can set variable to this)
+        -Symbol
+
+In-fix notation
+    -An operator sits between the two parameters.
+
+Pre-fix
+    -The operator sits in the beginning of the two parameters.
+
+Post-Fix
+    -The operator sits in the end of the two parameters.
+
+Operator Precedence
+    -Which function gets called first (the higher the precedence wins)
+
+Associativity
+    -What operator function get called in first. from left ro right(left associativity) or right to left(right associativity).
+    -https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+
+-Coercion
+    -Converting value from one type to another.
+    -var myNum =  3 + '2'; //output: string '32'
+    -//3 is coerce by the javascript engine into a string.
+    -false = 0
+    -true = 1
+    -undefined = NaN
+    -Null = 0
+    -Null does not coerce to 0 when used in comparision '==', null == 0 //false
+    -"" == 0 //true
+    -"" == false //true
+
+-Comparision operator (solved the coerce problem)
+    - === (tripple equal)
+        - it compares two things but it does not coerce the value.
+    -https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
+    -|| or OR operator returns a value when one of the parameter is true or is a values.
+
+-Object
+    -collection of name/value pair
+    -can have function and its name is methods
+    -can also have object as property
+    -dot '.' is used to access the object properties/methods.
+    -in memory the base object has a reference to the address of these properties.
+    - .. = new Object(); //create an object but not ideal
+    -used bracket to create a properties [] or .
+    -. operator is better than [] readability wise.
+
+Object Literals
+    -best way to create Object is using literals syntax {} preferred way to create an object
+    -you can invoke a function and passing a object
+
+
+JSON
+    -JavaScript Object Notation
+    -properties needs to be wrap in quotes
+    -JSON.stringify(object) convert object to jason format
+    -JSON.parse(string) convert json to javascript object
+    -function is not allowed
+    -requires quotes
+
+First Class Function
+    -everything you can do with other types  you can do with functions.
+    -assign them to variables, pass them around, create them on the fly
+    -functions are object
+    -resides in the memory
+    -can attached function to a properties or methods to a function because function is Object
+    -you can attached it to primitive (name/value pair), object, function
+    -two important properties
+        -Name (can be anonymous, it does not to have a name)
+        -Code
+            -actual lines of code set (programmer wrote).
+            -can be invoke or run using ()
+
+Function Statements
+    -do work
+    -doest not return value
+    -if statement for example
+
+Function Expressions
+    -a unit of code that results in a value. returns a value.
+    -it does not have to save a value.
+    -function expresion is not hoisted
+
+By Value
+    -reference a location in a memory.
+    -If the value is primitive
+        -a copy of that value is copied to the new variable.
+        -the new value then has a new address which the new variable points to
+
+By Reference
+    -If the value is an Object and the new variable is set to that it
+    -The new variable does not copy the Object, but instead points to the Object memory location.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
