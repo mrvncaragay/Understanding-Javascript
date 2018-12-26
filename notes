@@ -186,7 +186,7 @@ Function Statements
 Function Expressions
     -a unit of code that results in a value. returns a value.
     -it does not have to save a value.
-    -function expresion is not hoisted
+    -function expresion is not hoisted meaning it did not allocate memory when the code ran
 
 By Value
     -reference a location in a memory.
@@ -211,19 +211,60 @@ this
     -to points to the object memory location create a variable self and set it to this
     -var self = this
 
+Array
+    -collection of many things (primitives, objects, functions)
+
+Arguments
+    -the parameters you pass to a function
+    -arguments contains a list of all the values of all the parameters that you pass to a function.
+    -you can partial parameter to a function and it will still run
+    -it acts like an array, but it doesnt work like array
+
+Spread parameter
+    - function(...other)
+    - the extra parameter that are passed are becomes 'other' array values
+    - arguments is deprecated
+
+Function Overloading
+    -because of first class function. it allows us to create a function with default parameter
+    -and calling other function.
+    -see example.
+
+Semi-Colon
+    -It is optional tp put semi-colon at the end of the code.
+    -It is important though to always put semi-colon to avoid unwanted result.
+    -java engine puts semi-colon it it did not see it.
+
+Whitespace
+    -Invisible characters that create literal 'space' in your written code.
 
 
+Immediately invoked function expressions (IIFE)
+    -invoked function returns a value
+    -the variable holds the variable is not a function but primitive (depends on the return value)
+    -not setting a function to a variable is okay as long as you wrapped it with () parenthesis
+    -IIFE also create a safe place for external source because
+        -it creates its on execution context so the variable declared inside IIFE
+        -will not collide with global variables or other code.
 
+Closures
+    -when a function is created and has a return value of function
+      -when the base function execution context finish. the variable used still remains
+      -in memory. when the child function is invoke. remember that it still have reference
+      -to the base function (memory) variables. therefore the base variables can still be called or use.
+    -The javascript engine makes  sure that when the function execution context is gone.
+      -the rest of the function can still go down the scope chain and able to find the variables
+      -used by the base function.
+    -The base function variables is closed in with the child functions.
 
+Functions Factories
+    -Closures is used to creat dynamics functions
 
+Closures and Callbacks
+    -Closures/first class function/function expression
 
-
-
-
-
-
-
-
+Callback function
+    - a function you give to another function, to be run when the other function is finished.
 
 
 

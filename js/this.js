@@ -31,7 +31,9 @@ b();
 var c = {
     name: 'The c object',
     log: function() {
-        var self = this; //self is not pointing to this current memory location
+        var self = this; //since this points to the c object we can declare a variable and points to 'this' memory
+                         //location. then we can have a variable referenced to the c object not to worry about
+                         //what this is pointing to.
 
         self.name = 'Updated c object using this' //replaced this to self
         console.log(self); //replaced this to self
