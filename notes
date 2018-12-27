@@ -211,6 +211,23 @@ this
     -to points to the object memory location create a variable self and set it to this
     -var self = this
 
+    -Javascript provide us a function to control what 'this' variable ends up being.
+        -Call function
+            -parameter: (object, ...the rest of arguments,..)
+            -works the same way as evoking the function using ()
+            -function.call(object, args1, args2...)
+        -Apply function
+            -same as call but instead of passing normal arguments
+                -it wants an array of parameters
+            -parameter: (object, [args1, args2, ...])
+
+        -Bind function
+            -parameter: object
+            -function.bind(object)
+            -returns a new copy of the function
+            -'this' then knows where to point in this case the object that was passed.
+
+
 Array
     -collection of many things (primitives, objects, functions)
 
@@ -264,13 +281,18 @@ Closures and Callbacks
     -Closures/first class function/function expression
 
 Callback function
-    - a function you give to another function, to be run when the other function is finished.
+    -A function you give to another function, to be run when the other function is finished.
 
 
+Function Borrowing (using call, apply, and bind)
+    -as long as the new object has the same properties as the object being referenced
+    -the new object can use the referenced object methods with 'this'
 
-
-
-
-
+Function Currying
+    -creating a copy of a function but with some preset parameter.
+    -it uses bind
+    -if no parameters passed except 'this'. you can input the required parameters
+    -function.bind(this, 3) - it sets the first parameter to 3 permanently.
+    -this can be use to set a default parameter
 
 
