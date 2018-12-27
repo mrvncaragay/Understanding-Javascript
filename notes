@@ -295,4 +295,6 @@ Function Currying
     -function.bind(this, 3) - it sets the first parameter to 3 permanently.
     -this can be use to set a default parameter
 
-
+Functional Programming
+    -we put work into functions, so we dont repeat codes
+    -use first class function
