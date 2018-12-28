@@ -237,7 +237,7 @@ Array
 Arguments
     -the parameters you pass to a function
     -arguments contains a list of all the values of all the parameters that you pass to a function.
-    -you can partial parameter to a function and it will still run
+    -you can put partial parameter to a function and it will still run
     -it acts like an array, but it doesnt work like array
 
 Spread parameter
@@ -363,3 +363,28 @@ Built-in Function Constructors
     -by creating a Function Constructor primitive is not actually === primitive
         -because you're actually creating an object.
     -It is better in general to just not use function constructor.
+
+Pure Prototypal Inheritance
+    -Object Create
+        -Object.create(object) it create a new object
+        -you can then call each properties and set their value
+
+    -Polyfill
+        -code that adds a feature which engine may lack.
+
+ECMAScript(ES6)
+    Classes
+        -Class is an object
+
+Syntatic sugar
+    -a different way to type something that doesnt hange how it works under the hood.
+
+Typeof
+    -typeof
+Instanceof
+    -instanceof
+
+Strict Mode
+    -tell the java script engine to be stricter with the code you type
+        -implement extra rules
+     -https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
