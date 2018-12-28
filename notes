@@ -230,6 +230,9 @@ this
 
 Array
     -collection of many things (primitives, objects, functions)
+    -use the traditional for(var i =...) since array is object.
+        -for(var prop in arr).. could iterate through function constructor
+        -if you created your own function constructor.
 
 Arguments
     -the parameters you pass to a function
@@ -298,3 +301,65 @@ Function Currying
 Functional Programming
     -we put work into functions, so we dont repeat codes
     -use first class function
+
+Inheritance
+    -One object gets access to the properties and methods of another object.
+
+Classical Inheritance
+    -very verbose
+        -friend, protected, private, interface
+
+Prototypal Inheritance
+    -simple, flexible, extensible, and easy to understand
+
+Proto
+    -All objects including function has 'proto' property
+    -Object stand on its own.
+
+Everything is an Object or a Primitive
+    -if you create an object its base object is its self
+    -function has its proto points to a object
+    -the base functions or array is Object
+    -.__proto__.__proto__
+
+Reflection
+    -An Object can look at itself, listing and changing its properties and methods.
+
+Extend
+    -underscore.js
+
+Javascript
+    -named Javascript to attract java developer.
+
+New
+    -A new empty object is created same as {}
+    -then invoke the function
+
+Functions Constructors
+    -first letter of the function is 'CAPITAL LETTER'
+        -function Car...
+    -A normal function that is used to construct objects.
+
+Prototype
+    -can be use to set up a method to be called by calling New
+    -It is not ideal to create method inside function constructors
+        -because it takes memory space
+        -what if 1000 user and only 20 needs that method?
+        -980 users have a method that is useless and and takes memory space.
+    -For efficiency it's better to put the method using the
+        -prototype because only one cope function is used.
+
+Undefined after calling a function
+    -when you use console.log it log the code you have written
+    -and returned undefined because nothing is returned.
+    -but if you return something. undefined is not returned.
+
+Built-in Function Constructors
+    -Danger!
+    -var a = 3 (primitive)
+    -var b = new Number(3)
+    -b == a //true
+    -b === a //false why? because a is primitive and b is an Object
+    -by creating a Function Constructor primitive is not actually === primitive
+        -because you're actually creating an object.
+    -It is better in general to just not use function constructor.
