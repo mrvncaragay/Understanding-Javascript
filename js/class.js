@@ -1,4 +1,4 @@
-
+//base class
 class Person {
 
     constructor(firstname, lastname) {
@@ -15,6 +15,7 @@ var john = new Person('John', 'Sadam');
 
 console.log(john.greet());
 
+//child class inheriting from base class
 class TallPerson extends Person {
 
     constructor(firstname, lastname, height) {
