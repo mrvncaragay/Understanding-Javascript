@@ -7,9 +7,13 @@ function Person(firstname, lastname) {
     //.firstname and .lastname add them to the new object
     this.firstname = firstname;
     this.lastname = lastname;
-    this.getFullName = function() {
-        return this.firstname + ' ' + this.lastname;
-    }
+    //this.getFullName = function() {
+        //return this.firstname + ' ' + this.lastname;
+    //}
+}
+
+Person.prototype.getFullName = function() {
+    return this.firstname + ' ' + this.lastname;
 }
 
 //new creates a new empty object

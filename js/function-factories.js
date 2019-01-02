@@ -4,7 +4,6 @@
 //base function
 function makeGreeting(language) {  //base function variables 'language'
 
-
     return function(firstname, lastname) {
         if(language === 'en') {
             console.log('Hi ' + firstname + ' ' + lastname)
@@ -13,7 +12,6 @@ function makeGreeting(language) {  //base function variables 'language'
         if(language === 'es') {
             console.log('Hola ' + firstname + ' ' + lastname)
         }
-
     }
 }
 

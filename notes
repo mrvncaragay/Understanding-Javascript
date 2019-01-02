@@ -208,8 +208,8 @@ Mutate
 
 this
     -every time a function is run javascript engine provide a variable called 'this'
-    -In a case where a function is actually a method attached to an object the 'this' points
-     to the object.
+        -In a case where a function is actually a method attached to an object the 'this' points
+        to the object.
     -to points to the object memory location create a variable self and set it to this
     -var self = this
 

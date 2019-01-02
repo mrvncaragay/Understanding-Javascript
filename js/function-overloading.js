@@ -1,14 +1,13 @@
 function greet(firstname, lastname, language) {
-    language =  language || 'en';
+    language = language || 'en';
 
-    if(language === 'en') {
+    if (language === 'en') {
         console.log('Hello ' + firstname + ' ' + lastname);
     }
 
-    if(language === 'es') {
+    if (language === 'es') {
         console.log('hola ' + firstname + ' ' + lastname);
     }
-
 }
 
 //creating a function for english default
