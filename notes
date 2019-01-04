@@ -207,6 +207,10 @@ Mutate
     -Immutable means it cant be changed.
 
 this
+    -Regular function
+        -'this' points to the global object (window)
+    -Method call
+        -'this' points to the object that is calling the method.
     -every time a function is run javascript engine provide a variable called 'this'
         -In a case where a function is actually a method attached to an object the 'this' points
         to the object.

@@ -31,7 +31,7 @@ logPersonName('en');
 logName.call(person, 'en', 'es');
 
 //apply
-//wants array of paramters
+//wants array of parameters
 logName.apply(person, ['en', 'es', '1']);
 
 
