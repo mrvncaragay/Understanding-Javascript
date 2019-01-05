@@ -1,0 +1,21 @@
+//event reference MDN
+//https://developer.mozilla.org/en-US/docs/Web/Events
+
+//selecting the first element find
+document.querySelector
+
+//removing class
+document.querySelector('#id' or '.class').classList.remove('class name')
+
+//adding class
+document.querySelector('#id' or '.class').className += 'class name';
+
+
+//only data
+document.querySelector('#id' or '.class').textContent = data
+
+//adding html content with data
+document.querySelector('#id' or '.class').innerHTML = '<em>' + data + </em>
+
+//setting display to none
+document.querySelector('#id' or '.class').style.display = 'none'
