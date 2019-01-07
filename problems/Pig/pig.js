@@ -21,35 +21,46 @@ class PigGame {
         this.cscore = cscore; //current score
         this.currentPlayer = this.rollDice(players.length, 1) //1-2; //Player who currently playing
         this.players = players;
+        this.numMoves = 1;
     }
 
     play() {
-        let dice = this.rollDice(6,1);
+        //if it roll 6 then add 1 to Num moves
+        //if another roll 6 then num moves is 2 then reset.
 
+        let dice = this.rollDice(6,5);
+        let conScore = dice;
         this.updateDiceImage(dice);
+        this.cscore += dice;
 
-        if(dice === 1) {
+        console.log('conScore: ' + conScore);
+        console.log('Dice Roll: ' + dice);
+        console.log('Num Moves: ' +this.numMoves);
+        console.log('Current Score: ' +this.cscore);
+
+        if(dice === 1 || (this.numMoves === 2 && (conScore + dice) === 12)) {
 
             this.cscore = 0;
-            this.updateStats();
+            this.numMoves = 1;
+            document.querySelector(`#current-${this.currentPlayer}`).textContent = this.cscore;
             this.changePlayer();
 
         } else {
-
-            this.cscore += dice;
-            this.updateStats(this.currentPlayer)
+            this.numMoves >= 2 ? this.numMoves = 1 : this.numMoves++;
+            document.querySelector(`#current-${this.currentPlayer}`).textContent = this.cscore;
         }
     }
 
-    updateStats() {
-        let cp = this.currentPlayer;
-        let cs = this.cscore;
-        document.querySelector(`#current-${cp--}`).textContent = cs;
-    }
+    saveScore() {
+        let cp = this.currentPlayer - 1;
 
-    updateCurrentScore() {
+        this.players[cp].score += this.cscore;
 
-        document.querySelector(`#current-${1}`).textContent = 0;
+        document.querySelector(`#score-${this.currentPlayer}`).textContent = this.players[cp].score;
+        document.querySelector(`#current-${this.currentPlayer}`).textContent = 0;
+        this.cscore = 0;
+        this.whoWin();
+        this.changePlayer();
     }
 
     init() {
@@ -60,6 +71,7 @@ class PigGame {
     }
 
     reset() {
+        this.currentPlayer = this.rollDice(this.players.length, 1);
         this.init();
     }
 
@@ -92,6 +104,7 @@ class PigGame {
     }
 
     resetWindowScore() {
+
         for(let i = 1; i <= 2; i++) {
             document.querySelector(`#score-${i}`).textContent = 0;
             document.querySelector(`#current-${i}`).textContent = 0;
@@ -102,79 +115,19 @@ class PigGame {
     rollDice(max, min = 1) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
+
+    whoWin() {
+        let cp = this.currentPlayer - 1;
+        if(this.mscore <= this.players[cp].score) {
+            alert(`Winner: ${this.players[cp].name}`);
+        }
+    }
 }
 
 class Player {
 
-    constructor(name, score = 0){
+    constructor(name, score = 0) {
         this.name = name || 'Not Set.';
         this.score = score;
     }
 }
-
-var Marv = new Player('Marv', 0)
-var Mark = new Player('Mark', 0)
-
-var pGame = new PigGame(100, 0, Marv, Mark);
-pGame.init();
-
-document.querySelector('.btn-roll').addEventListener('click',function(){
-    pGame.play();
-});
-
-document.querySelector('.btn-new').addEventListener('click',function(){
-    pGame.reset();
-});
-
-
-/*
-function updateTurn(player) {
-
-    if(setWhoGoesFirst === 1) {
-
-        p1.className += ' active';
-        p2.classList.remove('active');
-    } else {
-
-        p2.className += ' active';
-        p1.classList.remove('active');
-    }
-}
-
-
-
-function updateCurrentScore(score) {
-    document.querySelector(`#current-${setWhoGoesFirst}`).textContent = score;
-}
-
-function saveCurrentScore(score) {
-    if( setWhoGoesFirst === 1 ) {
-
-        playerOneScore += score;
-        document.querySelector(`#score-${setWhoGoesFirst}`).textContent = playerOneScore;
-        alertWinner(playerOneScore, 'Player 1')
-
-    } else {
-        playerTwoScore += score;
-        document.querySelector(`#score-${setWhoGoesFirst}`).textContent = playerTwoScore;
-        alertWinner(playerOneScore, 'Player 2')
-    }
-}
-
-function alertWinner(score, player) {
-    if(score >= 100) { alert('Player 1 is the winner!') }
-}
-
-function resetGame() {
-    score = 0;
-    playerOneScore = 0;
-    playerTwoScore = 0;
-    setWhoGoesFirst = (Math.floor(Math.random() * (2 - 1 + 1))) + 1;
-    document.querySelector(`#score-1`).textContent = 0;
-    document.querySelector(`#score-2`).textContent = 0;
-    document.querySelector(`#current-1`).textContent = 0;
-    document.querySelector(`#current-2`).textContent = 0;
-    updateTurn(setWhoGoesFirst);
-}
-
-*/
