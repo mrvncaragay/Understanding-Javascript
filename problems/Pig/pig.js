@@ -6,6 +6,11 @@ If the player rolls any other number, it is added to their turn total and the pl
 If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.
 The first player to score 100 or more points wins. -Wikipedia
 
+add the following rules:
+
+-A player losses his entire score when he rolls two 6 in a row. it's the next player turn.
+-Add inout field to set the winning score. can change the predefined score of 100.
+-add another dice to the game. player losses his current score when one of them is a 1.
  */
 
 class PigGame {
@@ -13,40 +18,36 @@ class PigGame {
     constructor( mscore = 100, cscore = 0, ...players ) {
 
         //check also if players are Player Class
-        if( players.length < 2 ) {
-            throw 'Not Enough Player';
-        }
+        if( players.length < 2 ) { throw 'Not Enough Player'; }
 
         this.mscore = mscore; //max score to win
         this.cscore = cscore; //current score
         this.currentPlayer = this.rollDice(players.length, 1) //1-2; //Player who currently playing
         this.players = players;
-        this.numMoves = 1;
+        this.numMoves = 0;
     }
 
     play() {
-        //if it roll 6 then add 1 to Num moves
-        //if another roll 6 then num moves is 2 then reset.
 
-        let dice = this.rollDice(6,5);
-        let conScore = dice;
-        this.updateDiceImage(dice);
-        this.cscore += dice;
+        //need to resolve this DRY
+        let dice = this.rollDice(6,1);
+        let dice2 = this.rollDice(6,1);
 
-        console.log('conScore: ' + conScore);
-        console.log('Dice Roll: ' + dice);
-        console.log('Num Moves: ' +this.numMoves);
-        console.log('Current Score: ' +this.cscore);
+        this.updateDiceImage(dice, dice2);
+        this.cscore += dice + dice2;
 
-        if(dice === 1 || (this.numMoves === 2 && (conScore + dice) === 12)) {
+        (dice === 6 || dice2 === 6) ? this.numMoves++ : this.numMoves = 0;
+
+        if((dice === 1 || dice2 === 1) || (this.numMoves === 2 && (dice === 6 || dice2 === 6))) {
+            //set currentPlayer score to 0 if 2 consecutive 6 roll
 
             this.cscore = 0;
-            this.numMoves = 1;
-            document.querySelector(`#current-${this.currentPlayer}`).textContent = this.cscore;
+            this.numMoves = 0;
+            document.querySelector(`#current-${this.currentPlayer}`).textContent = 0;
             this.changePlayer();
 
         } else {
-            this.numMoves >= 2 ? this.numMoves = 1 : this.numMoves++;
+
             document.querySelector(`#current-${this.currentPlayer}`).textContent = this.cscore;
         }
     }
@@ -88,13 +89,20 @@ class PigGame {
         }
     }
 
-    updateDiceImage(num) {
-        document.querySelector(".dice").src = `dice-${num}.png`;
+    updateDiceImage(...num) {
+
+       for(let i = 0; i < num.length; i++) {
+          document.querySelector(`.dice${i}`).src = `dice-${num[i]}.png`;
+        }
     }
 
     changePlayer() {
         this.currentPlayer === 1 ? this.currentPlayer++ : this.currentPlayer--;
         this.coinToss();
+    }
+
+    setMaxScore(wscore) {
+        this.mscore = wscore;
     }
 
     setPlayerNames(){
