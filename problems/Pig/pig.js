@@ -38,8 +38,15 @@ class PigGame {
 
         (dice === 6 || dice2 === 6) ? this.numMoves++ : this.numMoves = 0;
 
-        if((dice === 1 || dice2 === 1) || (this.numMoves === 2 && (dice === 6 || dice2 === 6))) {
-            //set currentPlayer score to 0 if 2 consecutive 6 roll
+        console.log(dice);
+        console.log(dice2);
+        console.log(this.numMoves);
+
+        if((dice === 1 || dice2 === 1) || this.numMoves === 2) {
+
+            if(dice === 6 || dice2 === 6) {
+                document.querySelector(`#score-${this.currentPlayer}`).textContent = 0;
+            }
 
             this.cscore = 0;
             this.numMoves = 0;
@@ -60,6 +67,7 @@ class PigGame {
         document.querySelector(`#score-${this.currentPlayer}`).textContent = this.players[cp].score;
         document.querySelector(`#current-${this.currentPlayer}`).textContent = 0;
         this.cscore = 0;
+        this.numMoves = 0;
         this.whoWin();
         this.changePlayer();
     }
