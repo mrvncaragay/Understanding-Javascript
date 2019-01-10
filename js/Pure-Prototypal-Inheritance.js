@@ -26,5 +26,14 @@ var john = Object.create(person);
 john.firstname = 'John';
 john.lastname = 'Perez';
 
+var eric = Object.create(person, {
+    firstname: 'eric',
+    lastname: 'Sabug'
+});
+
 console.log(john);
 console.log(john.greet());
+
+console.log(eric);
+console.log(eric.greet());
+

@@ -338,7 +338,9 @@ Javascript
     -named Javascript to attract java developer.
 
 New
-    -A new empty object is created same as {}
+    -Creates an empty object is created same as {}
+    -'this' points to the empty object
+    -function constructor then initialized all the values set
     -then invoke the function
 
 Functions Constructors
@@ -374,6 +376,12 @@ Pure Prototypal Inheritance
     -Object Create
         -Object.create(object) it create a new object
         -you can then call each properties and set their value
+
+     -Object.create vs functions constructor
+        -Object.create
+            -builds an object that inherit directly from the object we pass in the argument
+        -function constructor
+            -The newly created object inherit from the function prototype property
 
     -Polyfill
         -code that adds a feature which engine may lack.
