@@ -1,31 +1,34 @@
 console.log('Inside Test');
 
-//var b = Hugis('square', 'red', 30);
+var arrys = [1995, 1999, 2010, 2015, 1952];
 
-//console.log(b);
 
-/*
-var Car = function(name, year){
-    ...
-    ...
+function myMap(fn) {
+    var arrRe = [];
 
-};*/
+    for(var i = 0; i < arrys.length; i++){
 
-//OR
-function Car(name, year) {
-    this.name = name;
-    this.year = year;
-};
+        if (fn(arrys[i])) {
+            arrRe.push(arrys[i]);
+        }
 
-Car.prototype.getAge = function() {
-    return 2019 - this.year;
+    }
+
+    return arrRe;
+
 }
 
-var honda = new Car('Honda', 2001);
-var toyota = new Car('toyota', 2005);
-var hyundai = new Car('hyundai', 1995);
+function mulTwo(el) {
+    return el * 2;
+}
+
+function ltTwo(el) {
+    if (el < 2000) {
+        return el;
+    }
+}
 
 
-console.log(honda.getAge());
-console.log(toyota.getAge());
-console.log(hyundai.getAge());
+var a = myMap(ltTwo);
+
+console.log(a);

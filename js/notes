@@ -267,6 +267,7 @@ Whitespace
 
 Immediately invoked function expressions (IIFE)
     -invoked function returns a value
+    -Data privacy
     -the variable holds the variable is not a function but primitive (depends on the return value)
     -not setting a function to a variable is okay as long as you wrapped it with () parenthesis
     -IIFE also create a safe place for external source because
