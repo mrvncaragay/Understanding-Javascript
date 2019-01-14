@@ -38,13 +38,11 @@ class PigGame {
 
         (dice === 6 || dice2 === 6) ? this.numMoves++ : this.numMoves = 0;
 
-        console.log(dice);
-        console.log(dice2);
-        console.log(this.numMoves);
-
         if((dice === 1 || dice2 === 1) || this.numMoves === 2) {
 
             if(dice === 6 || dice2 === 6) {
+
+                this.players[this.currentPlayer - 1].score = 0;
                 document.querySelector(`#score-${this.currentPlayer}`).textContent = 0;
             }
 
