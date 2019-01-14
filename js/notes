@@ -403,3 +403,20 @@ Strict Mode
     -tell the java script engine to be stricter with the code you type
         -implement extra rules
      -https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
+
+Module
+    -Keep related peaces of codes together inside separate/independent organized units
+    -IIFE
+    -Closure
+    -encapsulation
+            -allows us to hide the implementation details of the specific module from the outside scope.
+            -only expose public interface or API
+        -private and public data
+            -only available inside the module
+            -prevents overwriting data
+            -safe code
+            -public methods
+                -expose to the public
+                -other modules or functions can use it
+
+    -separation of concern
