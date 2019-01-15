@@ -309,6 +309,12 @@ Functional Programming
     -we put work into functions, so we dont repeat codes
     -use first class function
 
+Arrow-Function
+    -let arrw = () => { console.log('Solve' } //no parameter
+    -let arrw = (name) => { console.log('Solve' } //1 parameter
+    -let arrw = (name) =>  console.log('Solve';  //1 parameter
+
+
 Inheritance
     -One object gets access to the properties and methods of another object.
 

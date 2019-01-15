@@ -109,3 +109,11 @@ console.log(withTax);
 
 const highValue = orders.filter(v => v >= 300);
 console.log(highValue);
+
+
+/*
+console.time();
+for(let i = 0; i < 2000000; i++) {
+}
+console.timeEnd();
+*/
