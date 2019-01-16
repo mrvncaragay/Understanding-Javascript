@@ -1,4 +1,12 @@
 /*
+    Object.assign(object, {properties}) //copies all properties from one object into another
+    Object.keys(object) //returns an array of strings - property names
+    delete object.properties //delete the property
+    'property' in object //check if object property exist
+*/
+
+
+/*
 //not ideal to create an object
 var person  =  new Object();
 

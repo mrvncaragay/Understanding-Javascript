@@ -28,6 +28,7 @@ console.timeEnd('looper');
 */
 
 console.log('\t' + 'Destructing');
+
 //Destructing
 const turtle = {
     name: 'bob',

@@ -1,6 +1,12 @@
 
 //Array
 //can hold different types of data
+/*
+    //array loops
+    for (let entry of JOURNAL) {
+        console.log(`${entry.events.length} events.`);
+    }
+*/
 
 var myArray = [
     1,
