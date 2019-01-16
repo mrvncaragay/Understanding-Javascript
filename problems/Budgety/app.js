@@ -1,10 +1,54 @@
 //BUDGET CONTROLLER //MODEL
 let budgetController = (function () {
 
+    function Income(id, description, value) {
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    }
+
+    function Expense(id, description, value) {
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    }
+
+    let data = {
+        allItems: {
+            inc: [],
+            exp: []
+        },
+
+        totals: {
+            inc: 0,
+            exp: 0
+        }
+    };
 
 
     return {
+        addItem: function(value, desc, type) {
+            let newitem, id;
 
+            //create new id base on type and add 1
+            if (data.allItems[type].length > 0) {
+                id = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            } else {
+                id = 0;
+            }
+
+            if (type === 'inc') {
+                newitem = new Income(id, desc, value);
+            } else if (type === 'exp') {
+                newitem = new Expense(id, desc, value);
+            }
+
+            //add data to our data structure
+            data.allItems[type].push(newitem);
+
+            //return the new items
+            return newitem;
+        }
     }
 
 })();
@@ -55,11 +99,18 @@ let controller = (function (budgetCtrl, UICtrl) {
 
     //get user input data
     let ctrlAddItem = function() {
-        console.log('da');
-        let input = UICtrl.getUserInput();
-    }
+        let input, newItem;
 
-    //add item to the budget controller
+        //get user input
+        input = UICtrl.getUserInput();
+
+        //add item to the budget controller
+        newItem = budgetCtrl.addItem(input.value, input.description, input.type);
+
+        console.log(newItem);
+    };
+
+
     //add the item to the UI
     //calculate the budget
     //Display the budget on the UI
@@ -72,5 +123,5 @@ let controller = (function (budgetCtrl, UICtrl) {
     };
 })(budgetController, UIController);
 
-
+//Run the application
 controller.init();
