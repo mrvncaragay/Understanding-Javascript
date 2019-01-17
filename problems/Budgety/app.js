@@ -61,7 +61,15 @@ let UIController = (function () {
         classValue: '.add__value',
         classDesc: '.add__description',
         classType: '.add__type',
-        btnClick: '.add__btn'
+        btnClick: '.add__btn',
+        incomeList: '.income__list',
+        expenseList: '.expenses__list',
+        classDateMonth: '.budget__title--month'
+
+    }
+
+    let DOMdate = {
+        month: new Date().getMonth()
     }
 
     return {
@@ -73,8 +81,40 @@ let UIController = (function () {
             };
         },
 
+        addListItems: function(obj, type) {
+            let itemEle, element;
+
+            //income
+            if (type === 'inc') {
+                element = DOMstrings.incomeList;
+                itemEle = `<div class="item clearfix" id="income-${obj.id}"><div class="item__description">${obj.description}</div><div class="right clearfix"><div class="item__value">${obj.value}</div><div class="item__delete">
+                           <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>`;
+
+            } else if (type === 'exp') {
+
+                element = DOMstrings.expenseList;
+                itemEle = `<div class="item clearfix" id="expense-${obj.id}"><div class="item__description">${obj.description}</div><div class="right clearfix"><div class="item__value">${obj.value}</div><div class="item__percentage">21%</div>
+                           <div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>`;
+            }
+
+            //insert obj to the window
+            document.querySelector(element).insertAdjacentHTML('beforeend', itemEle);
+        },
+
         getDomStrings: function() {
             return DOMstrings;
+        },
+
+        getDomMonth: function() {
+            let month;
+            
+            switch (DOMdate.month) {
+                case 0:
+                    month = 'January';
+                    break;
+            }
+
+            return month;
         }
     };
 })();
@@ -87,10 +127,14 @@ let controller = (function (budgetCtrl, UICtrl) {
 
         //get UIController DOM strings
         let DOM = UICtrl.getDomStrings();
+        let month = UICtrl.getDomMonth();
+
+        //Insert Month
+        document.querySelector(DOM.classDateMonth).insertAdjacentHTML('beforeend', `${month}`);
 
         document.querySelector(DOM.btnClick).addEventListener('click', ctrlAddItem);
         document.addEventListener('keypress', function(e){
-
+''
             if(e.key === 13 || e.which === 13) {
                 ctrlAddItem();
             }
@@ -107,11 +151,12 @@ let controller = (function (budgetCtrl, UICtrl) {
         //add item to the budget controller
         newItem = budgetCtrl.addItem(input.value, input.description, input.type);
 
-        console.log(newItem);
+        //add the item to the UI
+        UICtrl.addListItems(newItem, input.type);
     };
 
 
-    //add the item to the UI
+
     //calculate the budget
     //Display the budget on the UI
 

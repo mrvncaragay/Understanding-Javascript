@@ -19,3 +19,6 @@ document.querySelector('#id' or '.class').innerHTML = '<em>' + data + </em>
 
 //setting display to none
 document.querySelector('#id' or '.class').style.display = 'none'
+
+//insert html elememnts
+document.querySelector('#id' or '.class').insertAdjacentHTML(html)
