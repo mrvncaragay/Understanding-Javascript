@@ -45,9 +45,12 @@ let budgetController = (function () {
 
             //add data to our data structure
             data.allItems[type].push(newitem);
-
             //return the new items
             return newitem;
+        },
+
+        calculateudget: function() {
+
         }
     }
 
@@ -68,10 +71,6 @@ let UIController = (function () {
 
     }
 
-    let DOMdate = {
-        month: new Date().getMonth()
-    }
-
     return {
         getUserInput: function(){
             return {
@@ -87,13 +86,13 @@ let UIController = (function () {
             //income
             if (type === 'inc') {
                 element = DOMstrings.incomeList;
-                itemEle = `<div class="item clearfix" id="income-${obj.id}"><div class="item__description">${obj.description}</div><div class="right clearfix"><div class="item__value">${obj.value}</div><div class="item__delete">
+                itemEle = `<div class="item clearfix" id="income-${obj.id}"><div class="item__description">${obj.description}</div><div class="right clearfix"><div class="item__value">+ ${obj.value}</div><div class="item__delete">
                            <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>`;
 
             } else if (type === 'exp') {
 
                 element = DOMstrings.expenseList;
-                itemEle = `<div class="item clearfix" id="expense-${obj.id}"><div class="item__description">${obj.description}</div><div class="right clearfix"><div class="item__value">${obj.value}</div><div class="item__percentage">21%</div>
+                itemEle = `<div class="item clearfix" id="expense-${obj.id}"><div class="item__description">${obj.description}</div><div class="right clearfix"><div class="item__value">- ${obj.value}</div><div class="item__percentage">21%</div>
                            <div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>`;
             }
 
@@ -105,16 +104,12 @@ let UIController = (function () {
             return DOMstrings;
         },
 
-        getDomMonth: function() {
-            let month;
-            
-            switch (DOMdate.month) {
-                case 0:
-                    month = 'January';
-                    break;
-            }
+        displayMonth: function() {
+            let current = new Date();
+            let arrMonths = ['January', 'February', 'March', 'April', 'May',
+                            'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-            return month;
+            document.querySelector(DOMstrings.classDateMonth).textContent = arrMonths[current.getMonth()];
         }
     };
 })();
@@ -123,14 +118,10 @@ let UIController = (function () {
 //GLOBAL APP CONTROLLER
 let controller = (function (budgetCtrl, UICtrl) {
 
-    let setUpEventListner = function() {
+    let setUpEventListener = function() {
 
         //get UIController DOM strings
         let DOM = UICtrl.getDomStrings();
-        let month = UICtrl.getDomMonth();
-
-        //Insert Month
-        document.querySelector(DOM.classDateMonth).insertAdjacentHTML('beforeend', `${month}`);
 
         document.querySelector(DOM.btnClick).addEventListener('click', ctrlAddItem);
         document.addEventListener('keypress', function(e){
@@ -153,17 +144,18 @@ let controller = (function (budgetCtrl, UICtrl) {
 
         //add the item to the UI
         UICtrl.addListItems(newItem, input.type);
+
+        //calculate the budget
     };
 
 
-
-    //calculate the budget
     //Display the budget on the UI
 
     return {
         init: function() {
             console.log('Application is running!');
-            setUpEventListner();
+            UICtrl.displayMonth();
+            setUpEventListener();
         }
     };
 })(budgetController, UIController);
