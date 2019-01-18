@@ -25,7 +25,6 @@ let budgetController = (function () {
         }
     };
 
-
     return {
         addItem: function(value, desc, type) {
             let newitem, id;
@@ -38,22 +37,31 @@ let budgetController = (function () {
             }
 
             if (type === 'inc') {
-                newitem = new Income(id, desc, value);
+                newitem = new Income(id, desc, Number(value));
             } else if (type === 'exp') {
-                newitem = new Expense(id, desc, value);
+                newitem = new Expense(id, desc, Number(value));
             }
 
             //add data to our data structure
             data.allItems[type].push(newitem);
+
+            //add value to totals
+            data.totals[type] += newitem.value;
+
             //return the new items
             return newitem;
         },
 
-        calculateudget: function() {
+        calculatebudget: function() {
+            return data.totals;
+        },
 
+        isEmptyData: function() {
+            console.log(data.allItems.exp.length === 0 && data.allItems.inc.length === 0);
+            return data.allItems.exp.length === 0 && data.allItems.inc.length === 0;
         }
-    }
 
+    }
 })();
 
 
@@ -64,10 +72,14 @@ let UIController = (function () {
         classValue: '.add__value',
         classDesc: '.add__description',
         classType: '.add__type',
-        btnClick: '.add__btn',
+        btnAddItem: '.add__btn',
         incomeList: '.income__list',
         expenseList: '.expenses__list',
-        classDateMonth: '.budget__title--month'
+        classBudgetInc: '.budget__income--value',
+        classBudgetExp: '.budget__expenses--value',
+        classTotalBudget: '.budget__value',
+        classDateMonth: '.budget__title--month',
+        classDeleteBtn: '.item__delete--btn'
 
     }
 
@@ -106,10 +118,22 @@ let UIController = (function () {
 
         displayMonth: function() {
             let current = new Date();
-            let arrMonths = ['January', 'February', 'March', 'April', 'May',
-                            'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            let arrMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
             document.querySelector(DOMstrings.classDateMonth).textContent = arrMonths[current.getMonth()];
+        },
+
+        displayBudget: function(obj) {
+            let total = obj.inc - obj.exp;
+
+            document.querySelector(DOMstrings.classBudgetInc).textContent = `+ ${obj.inc}`;
+            document.querySelector(DOMstrings.classBudgetExp).textContent = `- ${obj.exp}`;
+            document.querySelector(DOMstrings.classTotalBudget).textContent = `${total}`;
+        },
+
+        clearFields: function() {
+            document.querySelector(DOMstrings.classValue).value = "";
+            document.querySelector(DOMstrings.classDesc).value = "";
         }
     };
 })();
@@ -123,33 +147,46 @@ let controller = (function (budgetCtrl, UICtrl) {
         //get UIController DOM strings
         let DOM = UICtrl.getDomStrings();
 
-        document.querySelector(DOM.btnClick).addEventListener('click', ctrlAddItem);
+        //listen to add item button (when user click or enter)
+        document.querySelector(DOM.btnAddItem).addEventListener('click', ctrlAddItem);
         document.addEventListener('keypress', function(e){
-''
+
             if(e.key === 13 || e.which === 13) {
                 ctrlAddItem();
             }
         });
-    }
+
+        //let id = document.querySelector(DOM.classDeleteBtn).addEventListener('click');
+    };
 
     //get user input data
     let ctrlAddItem = function() {
-        let input, newItem;
+        let inputdata, newitem, budget;
 
         //get user input
-        input = UICtrl.getUserInput();
+        inputdata = UICtrl.getUserInput();
 
         //add item to the budget controller
-        newItem = budgetCtrl.addItem(input.value, input.description, input.type);
+        newitem = budgetCtrl.addItem(inputdata.value, inputdata.description, inputdata.type);
 
         //add the item to the UI
-        UICtrl.addListItems(newItem, input.type);
+        UICtrl.addListItems(newitem, inputdata.type);
 
         //calculate the budget
+        budget = budgetCtrl.calculatebudget();
+
+        //Display the budget on the UI
+        UICtrl.displayBudget(budget);
+
+        //Clear fields
+        UICtrl.clearFields();
+
+        //activate event listener to delete
     };
 
-
-    //Display the budget on the UI
+    let ctrlDeleteItem = function() {
+        console.log('deleted');
+    };
 
     return {
         init: function() {
@@ -162,3 +199,6 @@ let controller = (function (budgetCtrl, UICtrl) {
 
 //Run the application
 controller.init();
+
+//input verification
+//delete item
