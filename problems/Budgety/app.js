@@ -53,11 +53,16 @@ let budgetController = (function () {
         },
 
         removeItem: function(type, id) {
+            let realid;
             //subtract the value this item to the total
-            data.totals[type] -= data.allItems[type][id].value;
+            realid = data.allItems[type].findIndex(function(itemID){
+                    return itemID.id === id;
+            });
+
+            data.totals[type] -= data.allItems[type][realid].value;
 
             //remove the budget in the array
-            data.allItems[type].splice(id, 1);
+            data.allItems[type].splice(realid, 1);
         },
 
         calculatebudget: function() {
@@ -84,7 +89,8 @@ let UIController = (function () {
         classBudgetExp: '.budget__expenses--value',
         classTotalBudget: '.budget__value',
         classDateMonth: '.budget__title--month',
-        classDeleteBtn: '.container'
+        classDeleteBtn: '.container',
+        classExpPer: '.budget__expenses--percentage'
 
     }
 
@@ -125,15 +131,19 @@ let UIController = (function () {
             let current = new Date();
             let arrMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-            document.querySelector(DOMstrings.classDateMonth).textContent = arrMonths[current.getMonth()];
+            document.querySelector(DOMstrings.classDateMonth).textContent = `${arrMonths[current.getMonth()]} ${current.getFullYear()}`;
         },
 
         displayBudget: function(obj) {
 
             let total = obj.inc - obj.exp;
+            let overAllPercentage = (obj.exp / obj.inc * 100);
 
             document.querySelector(DOMstrings.classBudgetInc).textContent = `+ ${obj.inc}`;
             document.querySelector(DOMstrings.classBudgetExp).textContent = `- ${obj.exp}`;
+
+            //Display Percentage
+            document.querySelector(DOMstrings.classExpPer).textContent = `${overAllPercentage.toPrecision(2)}%`;
 
             if(total > 0) {
                 document.querySelector(DOMstrings.classTotalBudget).textContent = `+${total}`;
