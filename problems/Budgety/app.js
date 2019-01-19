@@ -36,6 +36,7 @@ let budgetController = (function () {
                 id = 0;
             }
 
+
             if (type === 'inc') {
                 newitem = new Income(id, desc, Number(value));
             } else if (type === 'exp') {
@@ -90,7 +91,9 @@ let UIController = (function () {
         classTotalBudget: '.budget__value',
         classDateMonth: '.budget__title--month',
         classDeleteBtn: '.container',
-        classExpPer: '.budget__expenses--percentage'
+        classExpPer: '.budget__expenses--percentage',
+        classItemPer: '.item__percentage'
+
 
     }
 
@@ -115,7 +118,7 @@ let UIController = (function () {
             } else if (type === 'exp') {
 
                 element = DOMstrings.expenseList;
-                itemEle = `<div class="item clearfix" id="exp-${obj.id}"><div class="item__description">${obj.description}</div><div class="right clearfix"><div class="item__value">- ${obj.value}</div><div class="item__percentage">21%</div>
+                itemEle = `<div class="item clearfix" id="exp-${obj.id}"><div class="item__description">${obj.description}</div><div class="right clearfix"><div class="item__value">- ${obj.value}</div><div class="item__percentage"></div>
                            <div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>`;
             }
 
@@ -134,16 +137,29 @@ let UIController = (function () {
             document.querySelector(DOMstrings.classDateMonth).textContent = `${arrMonths[current.getMonth()]} ${current.getFullYear()}`;
         },
 
-        displayBudget: function(obj) {
+        displayBudget: function(obj, input, newitem) {
 
             let total = obj.inc - obj.exp;
-            let overAllPercentage = (obj.exp / obj.inc * 100);
+            let overAllPercentage = obj.exp / obj.inc * 100;
 
             document.querySelector(DOMstrings.classBudgetInc).textContent = `+ ${obj.inc}`;
             document.querySelector(DOMstrings.classBudgetExp).textContent = `- ${obj.exp}`;
 
-            //Display Percentage
+            //Display the overall Percentage
             document.querySelector(DOMstrings.classExpPer).textContent = `${overAllPercentage.toPrecision(2)}%`;
+
+            //display each item percentage
+            if(input.type === 'exp') {
+                //let val, ele;
+
+                //val = Number(input.value);
+                //val = val / obj.inc * 100;
+
+                //ele = document.getElementById(`exp-${newitem.id}`);
+
+                //console.log(ele);
+                 //val.toPrecision(2) + '%';
+            }
 
             if(total > 0) {
                 document.querySelector(DOMstrings.classTotalBudget).textContent = `+${total}`;
@@ -214,7 +230,7 @@ let controller = (function (budgetCtrl, UICtrl) {
             budget = budgetCtrl.calculatebudget();
 
             //Display the budget on the UI
-            UICtrl.displayBudget(budget);
+            UICtrl.displayBudget(budget, inputdata, newitem);
 
             //Clear fields
             UICtrl.clearFields();
