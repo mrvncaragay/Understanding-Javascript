@@ -11,7 +11,18 @@ let budgetController = (function () {
         this.id = id;
         this.description = description;
         this.value = value;
+        this.percentage = -1;
     }
+
+    Expense.prototype.calcPercentage = function(totalIncome){
+        if(totalIncome > 0) {
+            this.percentage = (this.value / totalIncome) * 100;
+        }
+    };
+
+    Expense.prototype.getPercentage = function() {
+        return this.percentage;
+    };
 
     let data = {
         allItems: {
@@ -66,12 +77,26 @@ let budgetController = (function () {
             data.allItems[type].splice(realid, 1);
         },
 
+        calculatePercentages() {
+            data.allItems.exp.forEach(function(current){
+                    current.calcPercentage(data.totals.inc);
+            });
+        },
+
+        getPercentages: function() {
+
+            let allPerc = data.allItems.exp.map(function(current){
+                return current.getPercentage();
+            });
+
+            return allPerc;
+        },
+
         calculatebudget: function() {
             return data.totals;
         },
     }
 })();
-
 
 
 ///
@@ -137,28 +162,17 @@ let UIController = (function () {
             document.querySelector(DOMstrings.classDateMonth).textContent = `${arrMonths[current.getMonth()]} ${current.getFullYear()}`;
         },
 
-        displayBudget: function(obj, input, newitem) {
+        displayBudget: function(obj) {
 
             let total = obj.inc - obj.exp;
-            let overAllPercentage = obj.exp / obj.inc * 100;
+            let overAllPercentage = Math.round(obj.exp / obj.inc * 100);
 
             document.querySelector(DOMstrings.classBudgetInc).textContent = `+ ${obj.inc}`;
             document.querySelector(DOMstrings.classBudgetExp).textContent = `- ${obj.exp}`;
 
             //Display the overall Percentage
-            document.querySelector(DOMstrings.classExpPer).textContent = `${overAllPercentage.toPrecision(2)}%`;
-
-            //display each item percentage
-            if(input.type === 'exp') {
-                //let val, ele;
-
-                //val = Number(input.value);
-                //val = val / obj.inc * 100;
-
-                //ele = document.getElementById(`exp-${newitem.id}`);
-
-                //console.log(ele);
-                 //val.toPrecision(2) + '%';
+            if(total > 0) {
+                document.querySelector(DOMstrings.classExpPer).textContent = `${overAllPercentage}%`;
             }
 
             if(total > 0) {
@@ -174,13 +188,33 @@ let UIController = (function () {
             item.parentNode.removeChild(item);
         },
 
+        displayPercentages: function(percentages) {
+
+            let fields = document.querySelectorAll(DOMstrings.classItemPer);
+
+            let nodeListForEach = function(list, callback) {
+
+                for(let i = 0; i < list.length; i++) {
+                    callback(list[i], i);
+                }
+            };
+
+            nodeListForEach(fields, function (current, index){
+
+                if(percentages[index] > 0){
+                    current.textContent = `${percentages[index]}%`;
+                } else {
+                    current.textContent = `0%`;
+                }
+            });
+        },
+
         clearFields: function() {
             document.querySelector(DOMstrings.classValue).value = "";
             document.querySelector(DOMstrings.classDesc).value = "";
         }
     };
 })();
-
 
 
 ///
@@ -211,6 +245,19 @@ let controller = (function (budgetCtrl, UICtrl) {
         UICtrl.displayBudget(budget);
     };
 
+    //update Percentage
+    let updatePercentages = function() {
+
+        //calc percentages
+        budgetCtrl.calculatePercentages();
+
+        //read percentages from the budget controller
+        let percentages = budgetCtrl.getPercentages();
+
+        //update the UI with the new percentages
+        UICtrl.displayPercentages(percentages);
+    };
+
     //get user input data
     let ctrlAddItem = function() {
         let inputdata, newitem, budget;
@@ -230,7 +277,10 @@ let controller = (function (budgetCtrl, UICtrl) {
             budget = budgetCtrl.calculatebudget();
 
             //Display the budget on the UI
-            UICtrl.displayBudget(budget, inputdata, newitem);
+            updateBudget();
+
+            //updatePercentages
+            updatePercentages();
 
             //Clear fields
             UICtrl.clearFields();
@@ -254,6 +304,9 @@ let controller = (function (budgetCtrl, UICtrl) {
 
             //update user UI
             updateBudget();
+
+            //updatePercentages
+            updatePercentages();
         }
     };
 
