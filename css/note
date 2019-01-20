@@ -22,3 +22,6 @@ document.querySelector('#id' or '.class').style.display = 'none'
 
 //insert html elememnts
 document.querySelector('#id' or '.class').insertAdjacentHTML(html)
+
+//insert html elememnts
+document.querySelectorAll('#id' or '.class')
