@@ -3,6 +3,8 @@
         -use parenthesis for 2 or parameters
         -user curly braces for more lines of code
             -use return
+        -careful with setting up this inside arrow method. it needs regular function call and arrow function to point
+            -to the object.
  */
 
 const years = [1990, 1992, 1995];
