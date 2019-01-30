@@ -1,0 +1,13 @@
+// Command Line commands list
+
+.. - Parent Folder
+dir - List all folders/files
+cd - Change Directory
+mkdir - Make or Create Folder
+rmdir /S <folder> - Delete Folder
+copy <file name> <path> - Copy file and move to Path
+move <file name> <path> - Move file and move to Path
+del <file name> - Delete File
+start <folder name> - Open the folder 
+<file name> - Open the file
+cls - Clear the command line
