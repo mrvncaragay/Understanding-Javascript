@@ -34,3 +34,4 @@ var c = Color.Red;
 var colorName = Color[13];
 console.log(c);
 console.log(colorName);
+// Any

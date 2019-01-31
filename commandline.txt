@@ -1,5 +1,6 @@
 // Command Line commands list
 
+\ - To Navigate to different folder
 .. - Parent Folder
 dir - List all folders/files
 cd - Change Directory

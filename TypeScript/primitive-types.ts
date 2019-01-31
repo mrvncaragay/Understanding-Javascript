@@ -42,7 +42,7 @@ console.log(ageName[1].substr(1)); //->ovlve
 //error
 //let nameAge: [string, number] = [21 ,'solve'];
 
-// Enu,
+// Enum
 
 enum Color {Red = 12, Green, Blue}
 
