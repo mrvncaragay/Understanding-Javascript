@@ -120,7 +120,7 @@ let UIController = (function () {
         classItemPer: '.item__percentage'
 
 
-    }
+    };
 
     return {
         getUserInput: function(){
