@@ -22,34 +22,63 @@ var budgetController = (function () {
     }());
     var Income = /** @class */ (function (_super) {
         __extends(Income, _super);
-        function Income() {
-            return _super !== null && _super.apply(this, arguments) || this;
+        function Income(id, description, value) {
+            return _super.call(this, id, description, value) || this;
         }
         return Income;
     }(Item));
     var Expense = /** @class */ (function (_super) {
         __extends(Expense, _super);
-        function Expense() {
-            return _super !== null && _super.apply(this, arguments) || this;
+        function Expense(id, description, value) {
+            var _this = _super.call(this, id, description, value) || this;
+            _this.percentage = -1;
+            return _this;
         }
+        Expense.prototype.getPercentage = function () {
+            return this.percentage;
+        };
         return Expense;
     }(Item));
+    var data = {
+        allItems: {
+            inc: [],
+            exp: []
+        },
+        totals: {
+            inc: 0,
+            exp: 0
+        }
+    };
     return {
         addItem: function (value, description, type) {
-            var newItem, id = 1;
+            var newitem;
+            var id = 1;
+            if (data.allItems[type].length > 0) {
+                id = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            }
+            else {
+                id = 0;
+            }
             if (type === 'inc') {
-                newItem = new Income(id, description, value);
+                newitem = new Income(id, description, value);
             }
             else if (type === 'exp') {
-                newItem = new Expense(id, description, value);
+                newitem = new Expense(id, description, value);
             }
-            return 12;
+            //add data to our data structure
+            data.allItems[type].push(newitem);
+            //add value to totals
+            data.totals[type] += newitem.value;
+            return newitem;
+        },
+        removeItem: function (type, id) {
+            var realid;
         }
     };
 })();
 var uiController = (function () {
 })();
 var appController = (function (budget, ui) {
-    var incomeItem = budget.addItem(1233, "Check", 'exp');
+    var incomeItem = budget.addItem(1233, "Check", "exp");
     console.log(incomeItem);
 })(budgetController, uiController);
