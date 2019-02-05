@@ -1,0 +1,10 @@
+
+//install a package
+npm install <package name> <--save-dev> //development ONLY dependencies only local
+
+//install global
+npm install <package name> <--global> or <--g>
+
+//install dependencies
+npm install <package name> <--save> //Dependencies for dev. and prod.
+
