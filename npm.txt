@@ -8,3 +8,9 @@ npm install <package name> <--global> or <--g>
 //install dependencies
 npm install <package name> <--save> //Dependencies for dev. and prod.
 
+//uninstall pkg
+
+npm uninstall <package name> --save
+
+
+//live server
