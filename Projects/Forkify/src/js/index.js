@@ -1,19 +1,39 @@
-// API Key: e9b164fbd0df686e13f17ccfddc91c07
-//https://www.food2fork.com/api/search
+import Search from './models/Search';
+import * as searchView from './views/searchView';
+import { elements } from './views/base';
 
-import axios from 'axios';
+/*
+    Global State of the app
+       -Search Object
+       -Current recipe Object
+       -Shopping list object
+       -Linked Recipes
+ */
+const state = {};
 
-async function getResult(query) {
-    const key = `e9b164fbd0df686e13f17ccfddc91c07`;
+//event for search submit
 
-    try {
+const controlSearch = async () => {
+    // - get query text from the view
+    const query = searchView.getInput(); //TODO
 
-       const result = await axios(`https://www.food2fork.com/api/search?key=${key}&q=${query}`);
-        console.log(result.data.recipes);
+    if (query) {
+        // - New search object and add to state
+        state.search = new Search(query);
 
-    }catch (error) {
-        alert(error);
+        // - Prepare UI for results
+
+        // - Search for recipes
+        await state.search.getResult();
+
+        // - Render results on UI
+        searchView.renderResults(state.search.result);
     }
-}
+};
 
-getResult('pasta');
+
+elements.searchForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    controlSearch();
+});
