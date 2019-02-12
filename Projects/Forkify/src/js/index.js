@@ -8,8 +8,6 @@ import * as listView from './views/listView';
 import * as likesView from './views/likesView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
-
-
 /*
     Global State of the app
        -Search Object
@@ -197,8 +195,6 @@ const controlLike = () => {
 
     likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
-
-
 
 // handling recipe button clicks
 elements.recipe.addEventListener('click', e => {
