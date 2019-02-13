@@ -1,0 +1,7 @@
+NodeJs - Javascript Runtime (Javascript on the server)
+       - Uses V8 (written in C++) Javascript Engine -> compiles to Machine Code
+       - Able to access File system, browser cant.
+
+       - Run Server (Create Server & Listen to request)
+       - Business Logic (Handles Request, Validate Input, and Connect to Database)
+       - Response (Return Responses (Rendered HTML, JSON))
