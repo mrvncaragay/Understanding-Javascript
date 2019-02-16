@@ -1,7 +1,39 @@
 NodeJs - Javascript Runtime (Javascript on the server)
+       - Single Threaded Java Script
        - Uses V8 (written in C++) Javascript Engine -> compiles to Machine Code
        - Able to access File system, browser cant.
 
        - Run Server (Create Server & Listen to request)
        - Business Logic (Handles Request, Validate Input, and Connect to Database)
        - Response (Return Responses (Rendered HTML, JSON))
+
+Core Modules
+    - http (HyperText Transfer Protocol) -> Lunch a server, send request
+    - https (HyperText Transfer Protocol Secure) -> Launch a SSL server
+    - fs (File System)
+    - path (Path)
+    - os (Operating System)
+
+Functions (Important)
+    - require('http');
+    - createServer( (req, res) => {})
+    - .listen(port#)
+
+
+Node Program Lifecycle
+    node app.js -> Start Script -> Parse Code, Register Variables & Functions -> Event Loop (keep running as there there are event listeners registered)
+    -> process.exit() -> End the server.
+
+Sending Responses
+    - .setHeader -> type of text to send
+    - .write -> send html
+    - .end -> send the response to the client and cant call write or another end AGAIN!
+
+Routing Request
+
+HTTP Code
+    - 302 -> redirect
+
+Streams & Buffers
+    - Stream -> start working on the data early (it sends chunks of data)
+    - Buffers hold multiple of chunks and work with them before they're release once you're done.
