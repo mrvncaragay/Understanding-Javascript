@@ -1,0 +1,7 @@
+Express
+
+middleware
+    - express() - create an express app
+    - next() - go to the next middleware
+    - send() - send a html...
+    - listen(port#) - createServer and listen to port#
