@@ -21,7 +21,7 @@ Functions (Important)
 
 
 Node Program Lifecycle
-    node app.js -> Start Script -> Parse Code, Register Variables & Functions -> Event Loop (keep running as there there are event listeners registered)
+    node express.js -> Start Script -> Parse Code, Register Variables & Functions -> Event Loop (keep running as there there are event listeners registered)
     -> process.exit() -> End the server.
 
 Sending Responses
