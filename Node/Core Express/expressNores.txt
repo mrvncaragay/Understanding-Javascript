@@ -5,3 +5,16 @@ middleware
     - next() - go to the next middleware
     - send() - send a html...
     - listen(port#) - createServer and listen to port#
+
+sendFile
+    - use to read a file e.g HTML
+    - requires node path module exported.
+
+static file
+    - .static(path.join(__dirname, 'public'))) -> '/css/main.css'
+
+.set
+    - share data globally
+
+.render
+    - (filename, { nameData: data, anotherData: data2 } )

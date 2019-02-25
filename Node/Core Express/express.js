@@ -7,6 +7,12 @@
 const express = require('express');
 const app = express();
 
+//using PUG
+app.set('view engine', 'pug');
+
+//setting different path template
+app.use('views', 'views');
+
 //importing routes
 const adminRoutes = require('./routes/admin');
 const indexRoutes = require('./routes/index');

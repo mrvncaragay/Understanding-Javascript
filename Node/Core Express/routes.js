@@ -2,7 +2,7 @@
     HANDLING ROUTES
 
     remember: execution is from top to bottom
-              therefor order of middleware with is very important.
+              therefor order of middleware is very important.
 
               If the path is executed it will not run the rest of the middleware
               unless you call next()
