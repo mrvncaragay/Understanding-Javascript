@@ -77,7 +77,7 @@ Asynchronous
 
 Event Queue
     -e.g Click, http request
-    -event queue is process when the execution stack is empty.
+    -each event queue is process when the execution stack is empty.
 
 Dynamic Typing
     -You dont tell the engine what type of data a variable to hold, it figure it out while your code is running.
@@ -168,6 +168,8 @@ JSON
     -requires quotes
 
 First Class Function
+    -higher order function
+        -is a function that takes a function as an argument or returns a function.
     -everything you can do with other types  you can do with functions.
     -assign them to variables, pass them around, create them on the fly
     -functions are object
@@ -199,8 +201,7 @@ By Value
 By Reference
     -If the value is an Object and the new variable is set to that it
     -The new variable does not copy the Object, but instead points to the Object memory location.
-    -understand that when using objects, all variables points to the same will get the same
-     are going to see that change.
+    -understand that when using objects, all variables points to the object will get the same result when object is changed.
 
 Mutate
     -To change something.
@@ -248,7 +249,7 @@ Arguments
 
 Spread parameter
     - function(...other)
-    - the extra parameter that are passed are becomes 'other' array values
+    - the extra parameter that are passed becomes 'other' array values
     - arguments is deprecated
 
 Function Overloading
