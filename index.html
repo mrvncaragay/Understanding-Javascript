@@ -8,7 +8,7 @@
     <div id="parentDiv">
             <p>i am h3</p>
             <p id="index">Understanding Javascript</p>
-            <p>I am a P</p>
+            <p id="dateHere"></p>
 
     </div>
     
@@ -18,8 +18,11 @@
     <script>
         function alertMe(a) {
             let parent = document.querySelector('#parentDiv');
-
-            console.log(parent.lastChild.);
+            let date = new Date();
+            let d = document.createElement('p');
+            let t = document.createTextNode(date.getDate());
+            d.appendChild(t);
+            parent.appendChild(d);
         }
     </script>
 

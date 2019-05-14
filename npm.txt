@@ -1,3 +1,6 @@
+//creating new project with node and npm
+1) npm init --yes
+    -this will not ask any default parameters
 
 //install a package
 npm install <package name> <--save-dev> //development ONLY dependencies only local
