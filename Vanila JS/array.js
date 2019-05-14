@@ -1,5 +1,11 @@
 
 //Array
+//push - add element in the end of the array
+//pop - remove element in the end of the array
+//shift - remove element in the begining of an array
+//unshift - add element in the begining of an array
+//splice - add elements anywhere in the array 
+//slice - copy
 //can hold different types of data
 /*
     //array loops

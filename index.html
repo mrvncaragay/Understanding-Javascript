@@ -5,7 +5,23 @@
     <title>Understanding Javascript</title>
 </head>
 <body>
-    <h2 id="index">Understanding Javascript</h2>
+    <div id="parentDiv">
+            <p>i am h3</p>
+            <p id="index">Understanding Javascript</p>
+            <p>I am a P</p>
+
+    </div>
+    
+
+    <input type="button" value="click" onclick="alertMe(this);">
+
+    <script>
+        function alertMe(a) {
+            let parent = document.querySelector('#parentDiv');
+
+            console.log(parent.lastChild.);
+        }
+    </script>
 
     <!--<script src="Projects/Quiz/quiz.Vanila JS"></script>-->
     <!--<script src="lib/Hugis.Vanila JS"></script>-->

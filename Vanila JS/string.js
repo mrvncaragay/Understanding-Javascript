@@ -1,3 +1,11 @@
+//slice - copy elements
+// .length - length of an string
+// .indexOf - find the first instance of the segment
+// .lastIndexOf - find the last instance of the segment
+// .charAt(<index>) - find a character
+// .replace(<str to find>, <replace it with str>) - replace str using replace
+//   replace all occurence use /..../g
+
 console.log("coconuts".slice(2, 4));
 // → nut
 console.log("coconut".indexOf("u"));
