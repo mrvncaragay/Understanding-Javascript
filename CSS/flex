@@ -1,0 +1,15 @@
+display: flex || inline-flex;
+flex-direction: row || column;
+flex-wrap: wrap || nowrap || wrapreverse - arrange items when resizing window size whether to go to next line.
+flex-basis: <length>
+    -same as Width
+justify-content: flex-start || flex-end || center;
+    -same align to the left (flex-start)
+align-self: flex-start || flex-end || center;
+    -align individual
+align-items: flex-start || flex-end || center;
+align-content: flex-start || flex-end || center;
+flex-grow: <interger>;
+flex-shrink: <integer>;
+flex: <integer>;
+order: <integer>;

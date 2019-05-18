@@ -10,7 +10,6 @@ document.querySelector('#id' or '.class').classList.remove('class name')
 //adding class
 document.querySelector('#id' or '.class').className += 'class name';
 
-
 //only data
 document.querySelector('#id' or '.class').textContent = data
 
@@ -22,6 +21,7 @@ document.querySelector('#id' or '.class').style.display = 'none'
 
 //insert html elememnts
 document.querySelector('#id' or '.class').insertAdjacentHTML(html)
-
-//insert html elememnts
-document.querySelectorAll('#id' or '.class')
+    'beforebegin': Before the element itself.
+    'afterbegin': Just inside the element, before its first child.
+    'beforeend': Just inside the element, after its last child.
+    'afterend': After the element itself.
