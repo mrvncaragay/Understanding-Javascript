@@ -1,10 +1,14 @@
-console.log('Inside Test');
 
-let data = {
-    inc: [{id: 0, value: 1},{id: 1, value: 2}],
-    exp: []
+
+function make(spread) {
+    
+    const ham = 'Ham ';
+    return function(flavor) {
+        return ham + flavor + spread;
+    }
 }
 
-console.log(data['inc'].findIndex(function(item){
-    return item.id === 0;
-}));
+
+const peanut = make('butter');
+
+console.log(peanut('bread '))

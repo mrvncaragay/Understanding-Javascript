@@ -103,6 +103,7 @@ function getUser(id) {
         setTimeout(() => {
             console.log('Reading a user from a database...');
             resolve({ id: id, gitHubUsername: 'marv' });
+            //reject(new Error('Cannot find user'));
         }, 2000);
     });
 }
@@ -111,12 +112,21 @@ function getRepo(username) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log('Calling Github API...');
-            resolve(['repo1', 'repo2', 'repo3']);
-            //reject(new Error('Lost Connection!'));
+            //resolve(['repo1', 'repo2', 'repo3']);
+            reject(new Error('Lost Connection!'));
         }, 2000);
     });
 }
 
+// getUser(1)
+//     .then(user => {
+//         getRepo(user.gitHubUsername)
+//             .then(repos => {
+//                 console.log(repos);
+//             })
+//             .catch(err => console.log(err))
+//     })
+//     .catch(err => console.log(err))
 
 getUser(1)
     .then(user => getRepo(user.gitHubUsername))

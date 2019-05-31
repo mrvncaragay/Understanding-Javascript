@@ -47,3 +47,11 @@ for (let [key, value] of question.entries() ) { //destructuring
 }
 
 //console.log(question);
+
+
+const myMap = new Map();
+
+myMap.set(1, "One");
+myMap.set(1, "TWo");
+
+console.log(myMap);
