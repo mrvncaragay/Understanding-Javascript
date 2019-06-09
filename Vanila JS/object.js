@@ -7,6 +7,12 @@
 
 
 /*
+    methods:
+        Object.assign copy the object
+
+**/
+
+/*
 //not ideal to create an object
 var person  =  new Object();
 

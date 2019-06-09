@@ -5,6 +5,7 @@
 dir - List all folders/files
 cd - Change Directory
 mkdir - Make or Create Folder
+new file - copy NUL <file name>
 rmdir /S <folder> - Delete Folder
 copy <file name> <path> - Copy file and move to Path
 move <file name> <path> - Move file and move to Path

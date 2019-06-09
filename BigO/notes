@@ -1,0 +1,29 @@
+Big-O measures the worse case complexity of an algorithm.
+    - n represents the number of inputs
+    - what will happen as n reaches infinity?
+    - Big O is important because it tells you how efficient the algorithm is.
+
+O(1) > O(log n) > O(n) > O(n^2) > O(n^3) > O(n^n)
+
+O(1) - constant time. it does not change with respect to input size.  
+     - e.g accessing an item in the array by its index.
+
+O(n) - liniear time. must do an n operation in thr worst case scenario.
+     - single for loop...
+
+O(n^2) - quadratic time.
+       - nested for loop..
+
+O(n^3) - cubic time.
+       - 3 for loop nested...
+
+O(log n) - logarithmic time
+         - n / 2
+
+the 3 common rules are : remove coefficient, sum, product, and polynomial
+
+1) ignore coefficient!
+2) add if two for loop then addition
+3) if loop is nested then it is product.
+
+
