@@ -1,0 +1,6 @@
+React 
+    - Reusable view Components
+
+Components 
+    - Building blocks of React
+    Pieces of UI & view logic

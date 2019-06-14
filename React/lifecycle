@@ -1,0 +1,22 @@
+prevProps
+preState
+
+
+3 main phases
+
+    - Mounting
+        - constructor
+        - render
+        - update DOM and refs
+        - componentDidMount
+            - good place to load data via AJAX/API call
+            - will re-render 
+
+    - Updating
+        - new props, setState, forceUpdate
+        - render
+        - update DOM and refs
+        - componentDidUpdate
+            - will be called after update
+    - Unmouting
+        - componentWillUnmount

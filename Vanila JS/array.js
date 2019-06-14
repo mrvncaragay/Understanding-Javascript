@@ -34,3 +34,30 @@ console.log(myArray);
 //and by putting a parenthesis include a parameter we can call the function.
 //--> 'Hi! Marv'
 myArray[3]("Marv");
+
+
+
+const a = {
+    name: 'Marv'
+}
+
+for( let key in a) {
+    console.log(a[key])
+}
+
+// for( let key of a) { error
+//     console.log(key)
+// }
+
+//in for the object gives the key, of on the otherhand will not work because it will not iterate its value
+//in for array is index, while of is its value
+
+const arr = [1, 2, 3]
+
+for ( let index in arr) { //index
+    console.log(index)
+}
+
+for ( let value of arr) { //value
+    console.log(value)
+}

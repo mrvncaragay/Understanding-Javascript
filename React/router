@@ -1,0 +1,37 @@
+acts like server routing <a>
+
+- shows different page
+    - All in the front-end, without loading a pages from server
+
+- we dont get
+    - A different URL as we move around 'pages'
+    - back/forward buttons
+    - no bookmark
+
+- Router
+    - SPA
+
+- npm i --save react-router-dom
+    - in App.js import { Route, Switch, Link or NavLink } from "react-router-dom"
+    -  import { BrowserRouter } from "react-router-dom"
+    - wrap <BrowserRouter> with <App /> </BrowserRouter>
+    - e.g <Route exact path="/dog" component={Dog} />
+
+    - Use <Link to="/">HomePage</Link> 
+        - or use NavLink
+    - <NavLink exact activeClassName="active-link" to="/">HomePage</NavLink>
+        - adds design active .active-link (change this to css)  
+
+    - USE <Route exact path="/dog" render={Dog} />
+        - it does not make a new component but re-render  
+            - passing props render={() => <Dog name={charles} />} 
+        - use components if you're not passing props 
+            - it calls mount,will mount components      
+
+-Passing Params
+    - <Route exact path='/food/:name' render={ param => <Food name="param.match.params.name" or name="param"/>}
+    - this works as passing components it will get the param
+
+- 404 page
+    - add at the end <Route render={() => <h1>Not Found</h1>}
+    - add Switch and exact except 404 page
