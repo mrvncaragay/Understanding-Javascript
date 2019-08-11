@@ -1,13 +1,21 @@
-const a = { name: 'Marv', age: 31, error: false }
+/**
+ * @param {string} J
+ * @param {string} S
+ * @return {number}
+ */
+var numJewelsInStones = function(J, S) {
+  let stones = 0;
 
+  for (let char of S) {
+    if (J.includes(char)) {
+      stones += 1;
+    }
+  }
 
-for(const key in a) {
-	let value = a[key];
+  return stones;
+};
 
-	if( typeof value === 'boolean')
-	{
-		console.log('found boolean');
-	}
+let J = 'z';
+let S = 'ZZ';
 
-	console.log(a[key])
-}
+console.log(numJewelsInStones(J, S));
